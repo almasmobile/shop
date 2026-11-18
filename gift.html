@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="format-detection" content="telephone=no">
+<title>گیفت کارت — الماس موبایل 💎</title>
+<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="gift">
+
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <img src="assets/logo-black.png" alt="الماس موبایل" class="logo-light">
+    <img src="assets/logo-white.png" alt="الماس موبایل" class="logo-dark">
+  </a>
+</header>
+
+<main class="container">
+  <a href="index.html" class="back-link">بازگشت به خانه</a>
+  <h1 class="page-title">خرید گیفت کارت</h1>
+  <p class="page-sub">ارز و مبلغ موردنظر خود را انتخاب کنید</p>
+
+  <form id="gift-form" novalidate>
+    <div class="section">
+      <h2>واحد پول</h2>
+      <div class="option-grid">
+        <label class="option">
+          <input type="radio" name="currency" value="USD" checked>
+          <span class="opt-title">دلار آمریکا (USD)</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="currency" value="EUR">
+          <span class="opt-title">یورو (EUR)</span>
+        </label>
+        <label class="option">
+          <input type="radio" name="currency" value="TRY">
+          <span class="opt-title">لیر ترکیه (TRY)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>مبلغ گیفت کارت</h2>
+      <div class="chip-grid" id="amounts"></div>
+    </div>
+
+    <div class="total-box">
+      <span>قیمت نهایی:</span>
+      <span class="amount" id="final-price">—</span>
+    </div>
+
+    <div class="section">
+      <h2>اطلاعات شما</h2>
+      <div class="form-group">
+        <label class="field-label" for="fullName">نام و نام خانوادگی</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label class="field-label" for="phone">شماره موبایل</label>
+        <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="09xxxxxxxxx" required dir="ltr">
+      </div>
+    </div>
+
+    <button type="submit" class="btn">ثبت درخواست و آماده‌سازی پیامک</button>
+  </form>
+
+  <div class="sms-preview" id="sms-preview"></div>
+  <button type="button" class="btn btn-secondary hidden" id="copy-btn">کپی متن پیامک</button>
+  <p class="hint">پس از کلیک، اپلیکیشن پیامک گوشی شما با متن آماده باز می‌شود؛ ارسال نهایی را خودتان تأیید کنید.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-info">
+    <div class="footer-logo">
+      <img src="assets/logo-black.png" alt="لوگوی الماس موبایل" class="logo-light">
+      <img src="assets/logo-white.png" alt="لوگوی الماس موبایل" class="logo-dark">
+    </div>
+    <div class="footer-address">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+      <span>تهران، بلوار مرزداران، خیابان سپهر، پاساژ پردیسان، جنب درب ورودی، پلاک ۴۶</span>
+    </div>
+    <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+      <a href="https://maps.app.goo.gl/MF4XovMW6DjFfsfNA" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 13px; padding: 10px 16px; width: auto;">مسیریابی با گوگل مپ</a>
+      <a href="https://nshn.ir/7bvZhbNx4byh" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 13px; padding: 10px 16px; width: auto;">مسیریابی با نشان</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

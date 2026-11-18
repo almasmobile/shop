@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جزئیات محصول — الماس موبایل</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body { font-family: 'Koodak', sans-serif !important; }
+  .product-page { max-width: 800px; margin: 0 auto; padding-bottom: 100px; }
+  
+  .header { padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid var(--border-soft); position: sticky; top: 0; background: var(--glass); backdrop-filter: blur(20px); z-index: 100; }
+  .back-btn { background: var(--card); border: 1px solid var(--border-soft); padding: 8px 16px; border-radius: 999px; text-decoration: none; color: var(--fg); font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+  
+  .gallery { padding: 20px; }
+  .main-img { width: 100%; height: 300px; object-fit: contain; background: #fff; border-radius: var(--radius); padding: 20px; mix-blend-mode: multiply; }
+  .thumbs { display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; }
+  .thumb { width: 60px; height: 60px; object-fit: contain; background: #fff; border-radius: 8px; padding: 5px; border: 2px solid transparent; cursor: pointer; }
+  .thumb.active { border-color: var(--brand); }
+
+  .info { padding: 0 20px; }
+  .title { font-size: 22px; font-weight: 900; margin: 0 0 10px; }
+  .price { font-size: 24px; color: var(--brand); font-weight: 900; margin-bottom: 20px; }
+  
+  .options { margin-bottom: 20px; }
+  .options-label { font-size: 14px; font-weight: bold; margin-bottom: 10px; }
+  .option-btns { display: flex; gap: 10px; }
+  .opt-btn { padding: 10px 20px; border-radius: var(--radius-sm); border: 1.5px solid var(--border-soft); background: var(--card); font-family: inherit; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+  .opt-btn.selected { border-color: var(--brand); background: var(--brand-glow); color: var(--brand); }
+
+  .specs { background: var(--card); padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-soft); margin-bottom: 20px; }
+  .specs h3 { margin: 0 0 15px; font-size: 16px; }
+  .specs ul { margin: 0; padding-right: 20px; line-height: 2; font-size: 14px; }
+  .specs li { margin-bottom: 5px; }
+
+  .sticky-btn { position: fixed; bottom: 0; left: 0; width: 100%; padding: 15px; background: var(--bg); border-top: 1px solid var(--border-soft); z-index: 100; display: flex; justify-content: center; }
+  .sticky-btn button { max-width: 600px; width: 100%; font-size: 18px; padding: 15px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="shop.html" class="back-btn">→ بازگشت به فروشگاه</a>
+</div>
+
+<div class="product-page">
+  <div class="gallery">
+    <img src="" id="main-img" class="main-img" alt="عکس محصول">
+    <div class="thumbs" id="thumbs-container"></div>
+  </div>
+
+  <div class="info">
+    <h1 class="title" id="product-title">نام محصول</h1>
+    <div class="price" id="product-price">۰ تومان</div>
+
+    <div class="options">
+      <div class="options-label">وضعیت:</div>
+      <div class="option-btns">
+        <button class="opt-btn selected">در حد نو</button>
+        <button class="opt-btn" style="opacity:0.5; pointer-events:none;">آکبند (ناموجود)</button>
+      </div>
+    </div>
+
+    <div class="specs">
+      <h3>مشخصات فنی:</h3>
+      <ul id="specs-list">
+        <!-- مشخصات توسط جاوااسکریپت پر میشود -->
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="sticky-btn">
+  <button class="btn" id="add-to-cart-btn">افزودن به سبد خرید</button>
+</div>
+
+<script src="products.js"></script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = Number(urlParams.get('id'));
+
+  // پیدا کردن دقیق محصول بر اساس ID
+  const product = allProducts.find(p => p.id === productId) || allProducts[0]; 
+
+  const formatToman = (n) => Number(n).toLocaleString('fa-IR') + ' تومان';
+
+  // پر کردن اطلاعات
+  document.getElementById('product-title').textContent = product.name;
+  document.getElementById('main-img').src = product.image;
+  document.getElementById('product-price').textContent = formatToman(product.price);
+
+  // پر کردن مشخصات
+  const specsList = document.getElementById('specs-list');
+  specsList.innerHTML = '';
+  if (product.specs && product.specs.length > 0) {
+    product.specs.forEach(spec => {
+      const li = document.createElement('li');
+      li.textContent = spec;
+      specsList.appendChild(li);
+    });
+  } else {
+    specsList.innerHTML = '<li>مشخصات خاصی ثبت نشده است.</li>';
+  }
+
+  // عکس کوچک
+  const thumbsContainer = document.getElementById('thumbs-container');
+  const thumb = document.createElement('img');
+  thumb.src = product.image;
+  thumb.className = 'thumb active';
+  thumbsContainer.appendChild(thumb);
+
+  // افزودن به سبد
+  document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+    let cart = JSON.parse(localStorage.getItem('almas_cart')) || [];
+    const existing = cart.find(item => item.id === productId);
+    
+    if (existing) {
+      alert('این محصول در سبد شما موجود است.');
+    } else {
+      cart.push({ id: productId, name: product.name, price: product.price, qty: 1, image: product.image });
+      localStorage.setItem('almas_cart', JSON.stringify(cart));
+      alert('✅ محصول به سبد خرید اضافه شد.');
+      window.location.href = 'shop.html';
+    }
+  });
+</script>
+</body>
+</html>

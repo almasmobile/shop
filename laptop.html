@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="format-detection" content="telephone=no">
+<title>خدمات لپ‌تاپ — الماس موبایل 💎</title>
+<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="laptop">
+
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <img src="assets/logo-black.png" alt="الماس موبایل" class="logo-light">
+    <img src="assets/logo-white.png" alt="الماس موبایل" class="logo-dark">
+  </a>
+</header>
+
+<main class="container">
+  <a href="index.html" class="back-link">بازگشت به خانه</a>
+  <h1 class="page-title">خدمات لپ‌تاپ</h1>
+  <p class="page-sub">نصب ویندوز، درایورها و برنامه‌های کاربردی</p>
+
+  <form id="laptop-form" novalidate>
+
+    <div class="section">
+      <h2>بسته‌ها و خدمات</h2>
+      <div class="option-grid" style="grid-template-columns:1fr;">
+        <label class="option">
+          <input type="checkbox" name="service" value="full" data-price="3500000" data-label="پکیج کامل (ویندوز + درایورها + برنامه‌های عمومی)">
+          <span class="opt-title">پکیج کامل</span>
+          <span class="opt-price gold">۳٬۵۰۰٬۰۰۰ تومان</span>
+          <span class="opt-price">شامل ویندوز، درایورها و برنامه‌های عمومی</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="service" value="win" data-price="3000000" data-label="ویندوز + درایورها">
+          <span class="opt-title">ویندوز + درایورها</span>
+          <span class="opt-price gold">۳٬۰۰۰٬۰۰۰ تومان</span>
+          <span class="opt-price">شامل نصب ویندوز و درایورها</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="service" value="general" data-price="500000" data-label="پکیج برنامه‌های عمومی">
+          <span class="opt-title">پکیج برنامه‌های عمومی</span>
+          <span class="opt-price gold">۵۰۰٬۰۰۰ تومان</span>
+          <span class="opt-price">برنامه‌های عمومی موردنیاز سیستم</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="service" value="office" data-price="500000" data-label="نصب برنامه‌های آفیس">
+          <span class="opt-title">نصب برنامه‌های آفیس</span>
+          <span class="opt-price gold">۵۰۰٬۰۰۰ تومان</span>
+          <span class="opt-price">آفیس به‌صورت جداگانه محاسبه می‌شود</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="service" value="single" data-price="0" data-label="نصب برنامه‌های سبک">
+          <span class="opt-title">نصب برنامه‌های سبک انتخابی</span>
+          <span class="opt-price gold">۳۵۰٬۰۰۰ تومان (به ازای هر برنامه)</span>
+          <span class="opt-price">جهت نصب هر برنامه سبک</span>
+        </label>
+      </div>
+
+      <!-- باکس مخفی برای اضافه کردن برنامه‌های سبک -->
+      <div class="form-group hidden" id="single-app-container" style="margin-top: 15px; padding: 15px; background: var(--card); border-radius: var(--radius-sm); border: 1px solid var(--border-soft);">
+        <label class="field-label" for="singleAppInput">نام برنامه سبک را بنویسید و Enter بزنید:</label>
+        <input type="text" id="singleAppInput" placeholder="مثلاً: Photoshop" dir="rtl">
+        <div class="chip-grid" id="single-app-tags" style="margin-top: 12px;"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>برنامه‌های موردنیاز</h2>
+      <p class="section-hint">برنامه‌هایی که می‌خواهید نصب شوند را انتخاب کنید.</p>
+      <div class="chip-grid">
+        <label class="chip"><input type="checkbox" name="apps" value="drivers" data-label="درایورها"><span>درایورها</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="video" data-label="پخش‌کننده ویدئو"><span>پخش‌کننده ویدئو</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="pdf" data-label="برنامه PDF"><span>برنامه PDF</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="zip" data-label="برنامه ZIP"><span>برنامه ZIP</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="itunes" data-label="iTunes"><span>iTunes</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="fonts" data-label="فونت فارسی"><span>فونت فارسی</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="dm" data-label="دانلود منیجر"><span>دانلود منیجر</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="browser" data-label="مرورگر"><span>مرورگر</span></label>
+        <label class="chip"><input type="checkbox" name="apps" value="other" data-label="سایر برنامه‌ها"><span>سایر برنامه‌ها</span></label>
+      </div>
+      <div class="form-group hidden" id="other-app-field" style="margin-top:12px;">
+        <label class="field-label" for="otherApp">نام برنامه‌های دیگر</label>
+        <input type="text" id="otherApp" name="otherApp" placeholder="مثلاً: AutoCAD ...">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>اطلاعات شما</h2>
+      <div class="form-group">
+        <label class="field-label" for="fullName">نام و نام خانوادگی</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label class="field-label" for="phone">شماره موبایل</label>
+        <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="09xxxxxxxxx" required dir="ltr">
+      </div>
+    </div>
+
+    <div class="total-box">
+      <span>مبلغ نهایی:</span>
+      <span class="amount" id="total-price">۰ تومان</span>
+    </div>
+
+    <button type="submit" class="btn">ثبت درخواست و آماده‌سازی پیامک</button>
+  </form>
+
+  <div class="sms-preview" id="sms-preview"></div>
+  <button type="button" class="btn btn-secondary hidden" id="copy-btn">کپی متن پیامک</button>
+  <p class="hint">پس از کلیک، اپلیکیشن پیامک گوشی شما با متن آماده باز می‌شود؛ ارسال نهایی را خودتان تأیید کنید.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-info">
+    <div class="footer-logo">
+      <img src="assets/logo-black.png" alt="لوگوی الماس موبایل" class="logo-light">
+      <img src="assets/logo-white.png" alt="لوگوی الماس موبایل" class="logo-dark">
+    </div>
+    <div class="footer-address">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+      <span>تهران، بلوار مرزداران، خیابان سپهر، پاساژ پردیسان، جنب درب ورودی، پلاک ۴۶</span>
+    </div>
+    <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; justify-content: center;">
+      <a href="https://maps.app.goo.gl/MF4XovMW6DjFfsfNA" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 13px; padding: 10px 16px; width: auto;">مسیریابی با گوگل مپ</a>
+      <a href="https://nshn.ir/7bvZhbNx4byh" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 13px; padding: 10px 16px; width: auto;">مسیریابی با نشان</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
